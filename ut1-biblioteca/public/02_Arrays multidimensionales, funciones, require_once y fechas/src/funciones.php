@@ -38,15 +38,17 @@ function calcularMediaPaginas(array $libros): float {
     return $paginas/$total;
 }
 
-function obtenerLibroMasLargo(array $libros): ?array{
-    $libroLargo = $libros[0];
+function obtenerLibroMasLargo(array $libros): ?array {
+    if (empty($libros)) return null;
+
+    $maxLibro = $libros[0];
 
     foreach ($libros as $libro) {
         if ($libro['paginas'] > $maxLibro['paginas']) {
             $maxLibro = $libro;
         }
     }
-    return $libroLargo;
+    return $maxLibro;
 }
 
 ?>

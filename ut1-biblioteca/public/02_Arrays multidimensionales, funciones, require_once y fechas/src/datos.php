@@ -64,16 +64,15 @@
             "disponible" => false, 
             "fechaAlta" =>"2010-09-26"
         ],
-    
         [
-            "id" => 08,
+            "id" => 8,
             "titulo" => "El puente de la visión", 
             "autor" => "Eugene Delacroix", 
             "genero" => "Didáctico", 
             "paginas"=> 184, 
             "disponible" => false, 
             "fechaAlta" =>"2010-03-29"
-            ]
+        ],
     ]
 
 ?>
