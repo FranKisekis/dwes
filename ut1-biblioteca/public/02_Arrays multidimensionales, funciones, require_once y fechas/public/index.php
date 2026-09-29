@@ -27,6 +27,10 @@ $libroMasLargo = obtenerLibroMasLargo($librosFiltrados);
 function escaparTextos(string $t): string {
     return htmlspecialchars($t, ENT_QUOTES, 'UTF-8');
 }
+
+$hoy = new DateTimeImmutable("now");
+$revision = $hoy->modify("+30 days");
+
 ?>
 
 
@@ -75,6 +79,27 @@ function escaparTextos(string $t): string {
     </div>
     <hr>
 <?php endforeach; ?>
+
+<h2>Fechas y revisión</h2>
+
+<ul>
+<?php foreach ($librosFiltrados as $libro): ?>
+    <?php
+        $fechaAlta = new DateTimeImmutable($libro["fechaAlta"]);
+
+        // Calcular días transcurridos
+        $diasPasados = $fechaAlta->diff($hoy)->days;
+    ?>
+    <li>
+        <strong><?= htmlspecialchars($libro["titulo"]) ?></strong><br>
+        Fecha alta: <?= htmlspecialchars($fechaAlta->format("Y-m-d")) ?><br>
+        Han pasado <?= htmlspecialchars((string)$diasPasados) ?> días desde su alta.
+    </li>
+<?php endforeach; ?>
+</ul>
+
+<p><strong>Fecha de revisión del catálogo:</strong>  
+<?= htmlspecialchars($revision->format("Y-m-d")) ?>
 
 </body>
 </html>
