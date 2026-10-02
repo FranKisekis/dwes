@@ -73,8 +73,8 @@ function ordenarVideojuegos(array $videojuegos, string $criterio): array
 
     for ($i = 0; $i < $cantidad; $i++) {
         for ($j = 0; $j < $cantidad - 1; $j++) {
-            $actual = $videojuegos[$i];
-            $siguiente = $videojuegos[$j + 1];
+            $actual = $videojuegos[$j][$criterio];
+            $siguiente = $videojuegos[$j + 1][$criterio];
 
             if ( $actual < $siguiente) {
                 $temporal = $actual;
